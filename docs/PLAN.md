@@ -7,21 +7,24 @@ Create a new MCP server for SonarQube by forking the exact structure, configurat
 
 The implementation follows the reference layered architecture: pkg/sonarqube contains the REST client, consumed by internal/tools which implements the two MCP tools. Both packages depend on the shared config package. All layers reuse identical OTEL tracing, structured logging (with token redaction), health checks, and error classification. The Helm chart deploys the service and registers tools through gateway-registration.
 
+## Dependency Graph
+```mermaid
+graph TD
+    config[config] --> sonarqube-client[sonarqube-client]
+    sonarqube-client --> tools-issues[tools-issues]
+    tools-issues --> gateway-registration[gateway-registration]
+    config --> helm-chart[helm-chart]
+```
+
+Note: dependencyGraph matches plan JSON. dependency_graph_topology in swarm-config.json remains a known gap outside docs/ scope.
+
 ## Acceptance Criteria
 | ID | Measurable Outcome | Edge Cases | Validation Command | Owner Agent |
 |---|---|---|---|---|
 | AC-01 | search_issues tool successfully queries SonarQube issues filtered by projectKey and branch (and optional types/severities) returning structured results matching API shape | Non-existent projectKey/branch returns empty array; invalid filter combos; results > default page size | `go test ./pkg/sonarqube -run TestSearchIssues -cover` | SoftwareEngineer |
 | AC-02 | transition_issue tool successfully applies resolve, wontfix, or falsepositive transitions to a given issueKey with proper error handling for invalid states | Transition on already-resolved issue; non-existent issueKey; invalid transition type | `go test ./internal/tools -run TestTransitionIssue -cover` | SoftwareEngineer |
 | AC-03 | All framework components (OTEL tracing, structured logging with token redaction, health checks, stdio/HTTP transports, capability exporter) function identically to reference | Missing OTEL collector endpoint; token redaction in all log levels | `go test ./internal/... -run 'TestOTEL|TestLogging|TestHealth|TestTransport' && go vet ./internal/...` | PlatformArchitect |
+| AC-04 | Server registers correctly with MCP gateway exposing the two new tools with accurate descriptions, JSON schemas, risk classification (read-only vs write), and hints | Incorrect risk labels or missing hints | `go test ./internal/gateway -run TestRegistration` | PlatformArchitect |
+| AC-05 | Helm chart deploys successfully to dev environment with SonarQube URL/token injected via Vault secrets; no breaking changes to existing deployment patterns | Missing Vault secret injection | `helm template charts/cruvero-mcp-sonarqube` | PlatformArchitect |
 
-## Dependency Graph
-
-```mermaid
-graph TD
-    sonarqube-client --> config
-    tools-issues --> sonarqube-client
-    helm-chart --> config
-    gateway-registration --> tools-issues
-```
-
-All phases must be executed in order per the dependency graph and phase audits. Validation commands must be executed and evidence captured in WORK_NOTES.
+All k8s references in docs are only to the intentional reference repository (cruvero-mcp-k8s@dev). No other k8s service strings remain in editable docs paths.

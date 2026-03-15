@@ -17,6 +17,7 @@
 - Record decisions/open questions with UTC timestamps in WORK_NOTES.
 - Preserve reproducibility with explicit validation commands and evidence.
 - Escalate blockers immediately under Blockers / Escalations.
+- Ensure docs/WORK_NOTES/memory-palace.md is updated after every audit or major decision.
 
 ## Definition of Done
 - All acceptance criteria validated with measurable evidence.
