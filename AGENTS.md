@@ -6,7 +6,7 @@
 
 ## Source of Truth
 - `docs/PLAN.md`
-- `docs/PHASE_PLANS/phase-*.md`
+- `docs/PHASE_PLANS/phase-*.md` (now expanded with detailed subtasks, signatures, test cases, and reference copy instructions)
 - `docs/PROMPTS/system.md` and `docs/PROMPTS/agent-*.md`
 - `docs/AUDIT/*.md`
 - `docs/WORK_NOTES/memory-palace.md`
@@ -23,3 +23,4 @@
 - All phase audits pass.
 - Residual risks documented with owners and mitigation paths.
 - Docs and implementation state are fully aligned.
+- Phase plans contain sufficient detail (files to copy, signatures, schemas, test cases) to eliminate shallow-depth issues.

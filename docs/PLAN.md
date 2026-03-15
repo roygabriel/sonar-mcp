@@ -10,8 +10,18 @@ The implementation follows the reference layered architecture: pkg/sonarqube con
 ## Acceptance Criteria
 | ID | Measurable Outcome | Edge Cases | Validation Command | Owner Agent |
 |---|---|---|---|---|
-| AC-01 | search_issues tool successfully queries SonarQube issues filtered by projectKey and branch (and optional types/severities) returning structured results matching API shape | Non-existent projectKey/branch returns empty array; invalid filter combos | `go test ./pkg/sonarqube -run TestSearchIssues` | SoftwareEngineer |
-| AC-02 | transition_issue tool successfully applies resolve, wontfix, or falsepositive transitions to a given issueKey with proper error handling for invalid states | Transition on already-resolved issue; non-existent issueKey | `go test ./internal/tools -run TestTransitionIssue` | SoftwareEngineer |
-| AC-03 | All framework components (OTEL tracing, structured logging with token redaction, health checks, stdio/HTTP transports, capability exporter) function identically to reference | Missing OTEL collector endpoint; token redaction in all log levels | `go test ./internal/... -run 'TestOTEL|TestLogging|TestHealth'` | PlatformArchitect |
+| AC-01 | search_issues tool successfully queries SonarQube issues filtered by projectKey and branch (and optional types/severities) returning structured results matching API shape | Non-existent projectKey/branch returns empty array; invalid filter combos; results > default page size | `go test ./pkg/sonarqube -run TestSearchIssues -cover` | SoftwareEngineer |
+| AC-02 | transition_issue tool successfully applies resolve, wontfix, or falsepositive transitions to a given issueKey with proper error handling for invalid states | Transition on already-resolved issue; non-existent issueKey; invalid transition type | `go test ./internal/tools -run TestTransitionIssue -cover` | SoftwareEngineer |
+| AC-03 | All framework components (OTEL tracing, structured logging with token redaction, health checks, stdio/HTTP transports, capability exporter) function identically to reference | Missing OTEL collector endpoint; token redaction in all log levels | `go test ./internal/... -run 'TestOTEL|TestLogging|TestHealth|TestTransport' && go vet ./internal/...` | PlatformArchitect |
 
-All other acceptance criteria from the original plan remain in force with Go-based validation commands.
+## Dependency Graph
+
+```mermaid
+graph TD
+    sonarqube-client --> config
+    tools-issues --> sonarqube-client
+    helm-chart --> config
+    gateway-registration --> tools-issues
+```
+
+All phases must be executed in order per the dependency graph and phase audits. Validation commands must be executed and evidence captured in WORK_NOTES.
