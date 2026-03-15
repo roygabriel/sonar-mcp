@@ -1,16 +1,16 @@
 # Phase Audit 5
 
 ## Target
-- Phase 5: Core UI Components Segment B Segment B Segment B
+- Phase 5: Helm Chart, Deployment and E2E Validation
 
 ## Audit Prompt
 ```text
-Audit Phase 5: Core UI Components Segment B Segment B Segment B against acceptance criteria, risk controls, and deterministic behavior.
+Audit Phase 5: Helm Chart, Deployment and E2E Validation against acceptance criteria, risk controls, and deterministic behavior.
 Return findings ordered by severity with explicit pass/fail gate decision and required remediations.
 ```
 
 ## Checklist
 - [ ] Acceptance criteria rows mapped to evidence
-- [ ] Validation commands executed and captured
+- [ ] Validation commands executed and captured (`go test` / `go vet`)
 - [ ] Risks assessed and mitigations documented
 - [ ] Ready/not-ready gate decision recorded
