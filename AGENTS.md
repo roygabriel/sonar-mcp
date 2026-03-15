@@ -29,13 +29,3 @@
 ## Agent Team
 - SoftwareEngineer (promptVersion: v2): Implements SonarQube client, tools, and test coverage.
 - PlatformArchitect (promptVersion: v1): Ensures exact structural and framework parity with k8s reference.
-- QA Specialist: Validates acceptance criteria, test coverage (>=85%), and E2E behavior.
-- Security Specialist: Verifies token redaction, secret-free error paths, and risk classifications.
-- Delivery Specialist: Owns Helm chart, deployment, CI/CD, and rollout validation.
-
-## docs/AGENTS.md
-# AGENTS
-
-This file contained duplicated content and has been consolidated.
-
-Please refer to the root AGENTS.md for the latest agent coordination guidelines, mission, source of truth, and definition of done.

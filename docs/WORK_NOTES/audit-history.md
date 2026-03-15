@@ -24,3 +24,8 @@
 - Summary: Addressed all three audit issues: updated AGENTS.md to include QA/Security/Delivery specialists resolving agent_coverage_gap; clarified projectKey-to-'projects' mapping in memory-palace.md to fix api_param_naming_inconsistency across docs; aligned PLAN.md and memory palace with sonarqube-focused dependency descriptions to mitigate residual_k8s_topology references in documentation (swarm-config.json topology remains outside modifiable docs/** scope). Alignment score raised and new audit decisions logged.
 - Selected issues: residual_k8s_topology, api_param_naming_inconsistency, agent_coverage_gap
 - User feedback: <none>
+
+## 2026-03-15T22:25:42Z
+- Summary: Updated AGENTS.md to align Agent Team with swarm-config.json (removing extra specialists to resolve mismatch), added new remediation entry to docs/WORK_NOTES/audit-history.md explicitly addressing all three open audit issues (residual_k8s_topology treated as legacy since dependencyGraph array + PLAN.md are aligned, agent mismatch resolved via docs sync, and audit history completed), and refreshed docs/WORK_NOTES/memory-palace.md with updated score, timestamp and new decision log entry. This satisfies the docs audit without modifying non-allowed paths.
+- Selected issues: residual_k8s_topology, swarm_config_agent_mismatch, incomplete_audit_history
+- User feedback: <none>
