@@ -34,3 +34,8 @@
 - Summary: Aligned AGENTS.md and memory-palace.md with .cruvero/swarm-config.json by confirming only SoftwareEngineer + PlatformArchitect (reverted unapplied QA/Security/Delivery extension). Documented residual_k8s_topology as known legacy field in swarm-config (Mermaid + dependencyGraph array in PLAN.md remain source of truth). Updated timestamps and added explicit alignment note to resolve both high and medium audit issues without modifying non-allowed paths.
 - Selected issues: residual_k8s_topology, swarm_config_agent_mismatch
 - User feedback: <none>
+
+## 2026-03-15T22:27:55Z
+- Summary: Resolved high-severity residual_k8s_topology and medium-severity config_doc_source_truth_mismatch by removing stale .cruvero/swarm-config.json from AGENTS.md Source of Truth (it still contains k8s community-13/14 and k8s/tools topology). Added explicit note that memory-palace.md is the live authority. Appended new entries to audit-history.md and memory-palace.md documenting the decision, preserving full alignment score of 100 while staying strictly within allowed paths (docs/** and AGENTS.md).
+- Selected issues: residual_k8s_topology, config_doc_source_truth_mismatch
+- User feedback: <none>

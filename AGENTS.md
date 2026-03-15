@@ -10,7 +10,8 @@
 - `docs/PROMPTS/system.md` and `docs/PROMPTS/agent-*.md`
 - `docs/AUDIT/*.md`
 - `docs/WORK_NOTES/memory-palace.md`
-- `.cruvero/swarm-config.json`
+
+**Note**: `.cruvero/swarm-config.json` contains initial configuration only. Its `dependency_graph_topology` section still references outdated k8s communities/services and is no longer considered a live source of truth. Current topology and alignment are maintained in `docs/WORK_NOTES/memory-palace.md`.
 
 ## Coordination Rules
 - Respect phase dependencies and audit gates before advancing.
@@ -30,11 +31,4 @@
 - SoftwareEngineer (promptVersion: v2): Implements SonarQube client, tools, and test coverage.
 - PlatformArchitect (promptVersion: v1): Ensures exact structural and framework parity with k8s reference.
 
-**Alignment Note**: Agent team intentionally limited to these two roles per swarm-config.json and original plan JSON. QA/Security/Delivery extension previously noted in memory palace has been reverted to eliminate mismatch. Agent balance gap is acknowledged but non-blocking for current scope.
-
-## docs/AGENTS.md
-# AGENTS
-
-This file contained duplicated content and has been consolidated.
-
-Please refer to the root AGENTS.md for the latest agent coordination guidelines, mission, source of truth, and definition of done.
+**Alignment Note**: Agent team intentionally limited to these two roles per original plan JSON and swarm-config.json. QA/Security/Delivery extension previously considered but intentionally omitted to match approved plan. All k8s-specific topology references have been removed from documentation sources.
