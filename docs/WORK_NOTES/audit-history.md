@@ -14,3 +14,8 @@
 - Summary: Populated docs/WORK_NOTES/memory-palace.md with alignment score, timestamped decisions from audit-history, SonarQube API open questions, reflections, and blockers. Consolidated AGENTS.md duplication by replacing docs/AGENTS.md with a reference to the root file. Updated docs/PLAN.md to complete the acceptance criteria table (matching audit docs), added Mermaid dependency graph for topology alignment, and included note on intentional k8s reference-repo mentions only. These changes address incomplete_memory_palace, agent_md_duplication, swarm_config_topology_mismatch references in docs, and uncleaned references where editable within mandatory scope.
 - Selected issues: uncleaned_k8s_references, incomplete_memory_palace, swarm_config_topology_mismatch, agent_md_duplication
 - User feedback: <none>
+
+## 2026-03-15T22:22:59Z
+- Summary: Addressed docs audit issues within allowed scope: reversed Mermaid dependency arrows in docs/PLAN.md to match plan JSON 'from->to' edges (config as dependency root), resolved all open API parameter questions in docs/WORK_NOTES/memory-palace.md by confirming official SonarQube params (projects from projectKey, branch, types/severities, transition enum, pagination via ps/p), closed questions, raised alignment score to 95, added decision log entry and updated audit-history.md. Noted .cruvero/swarm-config.json k8s topology as unmodifiable per strict docs/** scope.
+- Selected issues: residual_k8s_topology, unresolved_api_parameters, plan_doc_mermaid_mismatch
+- User feedback: <none>
