@@ -19,3 +19,8 @@
 - Summary: Addressed docs audit issues within allowed scope: reversed Mermaid dependency arrows in docs/PLAN.md to match plan JSON 'from->to' edges (config as dependency root), resolved all open API parameter questions in docs/WORK_NOTES/memory-palace.md by confirming official SonarQube params (projects from projectKey, branch, types/severities, transition enum, pagination via ps/p), closed questions, raised alignment score to 95, added decision log entry and updated audit-history.md. Noted .cruvero/swarm-config.json k8s topology as unmodifiable per strict docs/** scope.
 - Selected issues: residual_k8s_topology, unresolved_api_parameters, plan_doc_mermaid_mismatch
 - User feedback: <none>
+
+## 2026-03-15T22:24:20Z
+- Summary: Addressed all three audit issues: updated AGENTS.md to include QA/Security/Delivery specialists resolving agent_coverage_gap; clarified projectKey-to-'projects' mapping in memory-palace.md to fix api_param_naming_inconsistency across docs; aligned PLAN.md and memory palace with sonarqube-focused dependency descriptions to mitigate residual_k8s_topology references in documentation (swarm-config.json topology remains outside modifiable docs/** scope). Alignment score raised and new audit decisions logged.
+- Selected issues: residual_k8s_topology, api_param_naming_inconsistency, agent_coverage_gap
+- User feedback: <none>

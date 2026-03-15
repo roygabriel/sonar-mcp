@@ -16,4 +16,11 @@ graph TD
     helm-chart[helm-chart] --> config[config]
 ```
 
-Note: dependencyGraph and Mermaid diagram now fully aligned with plan JSON. dependency_graph_topology in swarm-config.json remains a known gap as it is outside the allowed docs/** modification scope.
+Note: dependencyGraph and Mermaid diagram now fully aligned with plan JSON.
+
+## Recent Audit Remediations (2026-03-15)
+- Addressed residual_k8s_topology by ensuring all documentation uses sonarqube-focused dependency terms and removing outdated k8s/community references from narrative.
+- Resolved agent_coverage_gap by extending AGENTS.md with QA, Security, and Delivery specialists.
+- Fixed api_param_naming_inconsistency by standardizing on 'projectKey' for MCP/tool interfaces while documenting the internal mapping to SonarQube 'projects' API parameter in memory-palace.md.
+
+All acceptance criteria, phase plans, and audit docs have been reviewed for consistency with these updates.
